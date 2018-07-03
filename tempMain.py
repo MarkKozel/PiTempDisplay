@@ -86,6 +86,7 @@ font = ImageFont.load_default()
 
 csvFile = open("temp.dat", 'w')
 csvFile.write("Date\tTime\tHumidity\tTemperature\n")
+csvFile.close()
 
 #Setup exit on SIG (from Pi shutdown) or CTRL
 keepRunning = True
@@ -131,7 +132,9 @@ while keepRunning:
   #Print and Save data
   print(newData)
   if writeFlag % writeInterval is 0:
+    csvFile = open("temp.dat", 'a')
     csvFile.write(newData + "\n")
+    csvFile.close()
     writeFlag = 0 #Reset write flag
   else:
     writeFlag += 1 #Bump write flag for next cycle
@@ -149,4 +152,4 @@ while keepRunning:
   disp.display()
 
   if keepRunning is True:
-    time.sleep(1)
+    time.sleep(6)
