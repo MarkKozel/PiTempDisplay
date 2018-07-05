@@ -85,7 +85,7 @@ x = 0
 font = ImageFont.load_default()
 
 csvFile = open("temp.dat", 'w')
-csvFile.write("Date\tTime\tHumidity\tTemperature\n")
+csvFile.write("Date\tTime\tTemperature\tHumidity\n")
 csvFile.close()
 
 #Setup exit on SIG (from Pi shutdown) or CTRL
